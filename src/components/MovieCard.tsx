@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import { Clock, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface MovieCardProps {
+  slug: string;
   title: string;
   poster: string;
   genre: string;
@@ -11,9 +13,12 @@ interface MovieCardProps {
   rating?: number;
 }
 
-const MovieCard = ({ title, poster, genre, duration, fsk, showtimes, rating }: MovieCardProps) => {
+const MovieCard = ({ slug, title, poster, genre, duration, fsk, showtimes, rating }: MovieCardProps) => {
   return (
-    <div className="group relative bg-card rounded-lg overflow-hidden border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_30px_-10px_hsl(38,80%,55%,0.3)]">
+    <Link
+      to={`/film/${slug}`}
+      className="group relative bg-card rounded-lg overflow-hidden border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_30px_-10px_hsl(38,80%,55%,0.3)] block"
+    >
       <div className="relative aspect-[2/3] overflow-hidden">
         <img
           src={poster}
@@ -45,16 +50,16 @@ const MovieCard = ({ title, poster, genre, duration, fsk, showtimes, rating }: M
 
         <div className="flex flex-wrap gap-1.5">
           {showtimes.map((time) => (
-            <button
+            <span
               key={time}
-              className="px-3 py-1.5 text-xs font-semibold rounded border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="px-3 py-1.5 text-xs font-semibold rounded border border-primary/40 text-primary"
             >
               {time}
-            </button>
+            </span>
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
