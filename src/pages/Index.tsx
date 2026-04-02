@@ -2,6 +2,7 @@ import CinemaHeader from "@/components/CinemaHeader";
 import HeroCarousel from "@/components/HeroCarousel";
 import MovieProgram from "@/components/MovieProgram";
 import CinemaInfo from "@/components/CinemaInfo";
+import CinemaEvents from "@/components/CinemaEvents";
 import CinemaFooter from "@/components/CinemaFooter";
 
 const Index = () => {
@@ -11,6 +12,7 @@ const Index = () => {
       <main>
         <HeroCarousel />
         <MovieProgram />
+        <CinemaEvents />
         <CinemaInfo />
       </main>
       <CinemaFooter />
