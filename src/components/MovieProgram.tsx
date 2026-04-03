@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { LayoutGrid, List } from "lucide-react";
 import MovieCard from "./MovieCard";
+import MovieListItem from "./MovieListItem";
 import { movies } from "@/data/movies";
 
 const days = ["Heute", "Do, 3.4.", "Fr, 4.4.", "Sa, 5.4.", "So, 6.4."];
 
 const MovieProgram = () => {
   const [activeDay, setActiveDay] = useState(0);
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   return (
     <section id="programm" className="py-16 md:py-24">
@@ -18,28 +21,65 @@ const MovieProgram = () => {
             <p className="text-muted-foreground mt-2">Finde deinen nächsten Lieblingsfilm</p>
           </div>
 
-          <div className="flex gap-2 overflow-x-auto pb-1">
-            {days.map((day, i) => (
+          <div className="flex items-center gap-4">
+            {/* View toggle */}
+            <div className="flex items-center gap-1 bg-secondary rounded-lg p-1">
               <button
-                key={day}
-                onClick={() => setActiveDay(i)}
-                className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
-                  i === activeDay
+                onClick={() => setViewMode("grid")}
+                className={`p-2 rounded-md transition-colors ${
+                  viewMode === "grid"
                     ? "gradient-gold text-primary-foreground"
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
+                aria-label="Rasteransicht"
               >
-                {day}
+                <LayoutGrid className="h-4 w-4" />
               </button>
-            ))}
+              <button
+                onClick={() => setViewMode("list")}
+                className={`p-2 rounded-md transition-colors ${
+                  viewMode === "list"
+                    ? "gradient-gold text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                aria-label="Listenansicht"
+              >
+                <List className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Day filter */}
+            <div className="flex gap-2 overflow-x-auto pb-1">
+              {days.map((day, i) => (
+                <button
+                  key={day}
+                  onClick={() => setActiveDay(i)}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
+                    i === activeDay
+                      ? "gradient-gold text-primary-foreground"
+                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  {day}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6">
-          {movies.map((movie) => (
-            <MovieCard key={movie.slug} {...movie} />
-          ))}
-        </div>
+        {viewMode === "grid" ? (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6">
+            {movies.map((movie) => (
+              <MovieCard key={movie.slug} {...movie} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col gap-6">
+            {movies.map((movie) => (
+              <MovieListItem key={movie.slug} {...movie} />
+            ))}
+          </div>
+        )}
 
         <div className="text-center mt-12">
           <a
