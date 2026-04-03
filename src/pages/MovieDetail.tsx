@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Clock, Star, Calendar, Film, Users } from "lucide-react";
+import { ArrowLeft, Clock, Star, Calendar, Film, Users, Ticket } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { getMovieBySlug } from "@/data/movies";
 import SeatSelection from "@/components/SeatSelection";
