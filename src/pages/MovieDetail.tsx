@@ -122,6 +122,72 @@ const MovieDetail = () => {
           </div>
         </div>
 
+        {/* Weekly showtime table */}
+        <div className="container mx-auto px-4 mt-12">
+          <h2 className="text-2xl font-bold text-foreground mb-6">
+            <span className="text-gradient-gold">Alle Spielzeiten</span>
+          </h2>
+          <div className="max-w-3xl rounded-xl border border-border bg-card overflow-x-auto">
+            {(() => {
+              const weekDays = ["Heute", "Sa 05.04.", "So 06.04.", "Mo 07.04.", "Di 08.04.", "Mi 09.04."];
+              return (
+                <table className="w-full min-w-[520px] text-sm">
+                  <thead>
+                    <tr>
+                      {weekDays.map((day, i) => (
+                        <th
+                          key={day}
+                          className={`p-3 text-center font-semibold border-b border-border ${
+                            i === 0
+                              ? "text-foreground bg-secondary/50"
+                              : "text-muted-foreground bg-secondary/30 border-l"
+                          }`}
+                        >
+                          {day}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {movie.showtimes.map((time, idx) => (
+                      <tr key={idx}>
+                        {weekDays.map((day, dayIdx) => {
+                          const available = (idx + dayIdx) % 4 !== 3;
+                          return (
+                            <td
+                              key={day}
+                              className={`p-2.5 text-center border-b border-border ${dayIdx > 0 ? "border-l" : ""}`}
+                            >
+                              {available ? (
+                                <button
+                                  onClick={() => setSelectedShowtime(selectedShowtime === time ? null : time)}
+                                  className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+                                    selectedShowtime === time && dayIdx === 0
+                                      ? "gradient-gold text-primary-foreground"
+                                      : "gradient-gold text-primary-foreground hover:opacity-90"
+                                  }`}
+                                >
+                                  <Ticket className="h-3 w-3" />
+                                  {time}
+                                </button>
+                              ) : (
+                                <span className="text-muted-foreground/40">–</span>
+                              )}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              );
+            })()}
+            <p className="text-[10px] text-muted-foreground italic text-right p-2">
+              Für Tickets auf die Uhrzeit klicken.
+            </p>
+          </div>
+        </div>
+
         {/* Trailer */}
         <div className="container mx-auto px-4 mt-12">
           <h2 className="text-2xl font-bold text-foreground mb-6">
