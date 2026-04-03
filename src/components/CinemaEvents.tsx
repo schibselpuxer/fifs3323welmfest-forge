@@ -1,6 +1,12 @@
 import { Calendar, Clock, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
+import eventSneak from "@/assets/event-sneak.jpg";
+import eventLadies from "@/assets/event-ladies.jpg";
+import eventKids from "@/assets/event-kids.jpg";
+import eventOpenair from "@/assets/event-openair.jpg";
+import eventRetro from "@/assets/event-retro.jpg";
+
 const events = [
   {
     title: "Sneak Preview",
@@ -10,6 +16,7 @@ const events = [
       "Erlebe einen brandneuen Film vor allen anderen – welcher es wird, bleibt bis zum Start geheim!",
     badge: "Wöchentlich",
     highlight: true,
+    image: eventSneak,
   },
   {
     title: "Ladies Night: Romantik-Spezial",
@@ -19,6 +26,7 @@ const events = [
       "Ein Abend nur für euch: Sekt-Empfang, exklusiver Film und tolle Überraschungen.",
     badge: "Special",
     highlight: false,
+    image: eventLadies,
   },
   {
     title: "Kinderkino am Sonntag",
@@ -28,6 +36,7 @@ const events = [
       "Familienfreundliche Vorstellung zum kleinen Preis – mit Mitmach-Aktion vor dem Film.",
     badge: "Familien",
     highlight: false,
+    image: eventKids,
   },
   {
     title: "Mondlicht-Open-Air-Kino",
@@ -37,6 +46,7 @@ const events = [
       "Kino unter freiem Himmel auf unserer Dachterrasse – mit Decken, Drinks und einem Klassiker.",
     badge: "Open Air",
     highlight: true,
+    image: eventOpenair,
   },
   {
     title: "Retro-Filmabend: 80er Kult",
@@ -46,6 +56,7 @@ const events = [
       "Zurück in die Zukunft, Ghostbusters oder Dirty Dancing? Stimme auf unserer Website ab!",
     badge: "Retro",
     highlight: false,
+    image: eventRetro,
   },
 ];
 
@@ -62,39 +73,57 @@ const CinemaEvents = () => {
           </p>
         </div>
 
-        <div className="grid gap-4 md:gap-6 max-w-3xl mx-auto">
+        <div className="grid gap-6 max-w-5xl mx-auto">
           {events.map((event) => (
             <div
               key={event.title}
-              className={`rounded-xl border p-5 md:p-6 transition-colors ${
-                event.highlight
-                  ? "border-primary/40 bg-primary/5"
-                  : "border-border bg-card"
-              } hover:border-primary/60`}
+              className="group relative rounded-xl overflow-hidden h-[220px] md:h-[280px] cursor-pointer"
             >
-              <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap mb-2">
-                    <h3 className="text-lg font-bold text-foreground">{event.title}</h3>
-                    {event.highlight && <Star className="h-4 w-4 text-primary fill-primary" />}
-                    <Badge
-                      variant="secondary"
-                      className="text-[10px] uppercase tracking-wider"
-                    >
-                      {event.badge}
-                    </Badge>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {event.description}
-                  </p>
+              {/* Background Image */}
+              <img
+                src={event.image}
+                alt={event.title}
+                loading="lazy"
+                width={1280}
+                height={512}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+
+              {/* Dark overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+
+              {/* Highlight border glow */}
+              {event.highlight && (
+                <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-primary/30" />
+              )}
+
+              {/* Content */}
+              <div className="relative z-10 flex flex-col justify-center h-full p-6 md:p-10 max-w-2xl">
+                <div className="flex items-center gap-2 flex-wrap mb-3">
+                  <Badge
+                    variant="secondary"
+                    className="text-[10px] uppercase tracking-wider bg-primary/20 text-primary border-primary/30"
+                  >
+                    {event.badge}
+                  </Badge>
+                  {event.highlight && <Star className="h-4 w-4 text-primary fill-primary" />}
                 </div>
-                <div className="flex sm:flex-col items-center sm:items-end gap-3 sm:gap-1 text-sm text-muted-foreground shrink-0">
+
+                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+                  {event.title}
+                </h3>
+
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4 line-clamp-2">
+                  {event.description}
+                </p>
+
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <span className="flex items-center gap-1.5">
-                    <Calendar className="h-3.5 w-3.5 text-primary" />
+                    <Calendar className="h-4 w-4 text-primary" />
                     {event.date}
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Clock className="h-3.5 w-3.5 text-primary" />
+                    <Clock className="h-4 w-4 text-primary" />
                     {event.time}
                   </span>
                 </div>
