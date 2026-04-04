@@ -9,7 +9,7 @@ const navItems = [
   { label: "Aktuell", href: "#aktuell" },
   { label: "Gutscheine", href: "#gutscheine" },
   { label: "Events", href: "#events" },
-  { label: "Über uns", href: "#ueber-uns" },
+  { label: "Über uns", href: "/ueber-uns" },
 ];
 
 const CinemaHeader = () => {
