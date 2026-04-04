@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Clock, Star, Ticket } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import type { CastMember } from "@/data/movies";
 
 interface MovieListItemProps {
   slug: string;
@@ -13,7 +14,7 @@ interface MovieListItemProps {
   rating?: number;
   description: string;
   director: string;
-  cast: string[];
+  cast: CastMember[];
 }
 
 const days = ["Heute", "Sa 05.04.", "So 06.04.", "Mo 07.04.", "Di 08.04.", "Mi 09.04."];
