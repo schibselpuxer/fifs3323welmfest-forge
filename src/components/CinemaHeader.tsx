@@ -9,7 +9,7 @@ const navItems = [
   { label: "Aktuell", href: "#aktuell" },
   { label: "Gutscheine", href: "#gutscheine" },
   { label: "Events", href: "#events" },
-  { label: "Über uns", href: "#ueber-uns" },
+  { label: "Über uns", href: "/ueber-uns" },
 ];
 
 const CinemaHeader = () => {
@@ -74,15 +74,25 @@ const CinemaHeader = () => {
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) =>
+            item.href.startsWith("/") ? (
+              <Link
+                key={item.label}
+                to={item.href}
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >
+                {item.label}
+              </a>
+            )
+          )}
         </nav>
 
         <div className="flex items-center gap-3">
