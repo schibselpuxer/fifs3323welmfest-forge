@@ -4,6 +4,8 @@ import { ArrowLeft, Clock, Star, Calendar, Film, Users, Ticket } from "lucide-re
 import { Badge } from "@/components/ui/badge";
 import { getMovieBySlug } from "@/data/movies";
 import SeatSelection from "@/components/SeatSelection";
+import MovieCastCrew from "@/components/MovieCastCrew";
+import MovieSceneImages from "@/components/MovieSceneImages";
 import CinemaHeader from "@/components/CinemaHeader";
 import CinemaFooter from "@/components/CinemaFooter";
 
@@ -187,6 +189,12 @@ const MovieDetail = () => {
             </p>
           </div>
         </div>
+
+        {/* Cast & Crew */}
+        <MovieCastCrew movie={movie} />
+
+        {/* Scene Images */}
+        <MovieSceneImages movie={movie} />
 
         {/* Trailer */}
         <div className="container mx-auto px-4 mt-12">
