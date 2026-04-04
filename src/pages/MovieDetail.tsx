@@ -190,6 +190,12 @@ const MovieDetail = () => {
           </div>
         </div>
 
+        {/* Cast & Crew */}
+        <MovieCastCrew movie={movie} />
+
+        {/* Scene Images */}
+        <MovieSceneImages movie={movie} />
+
         {/* Trailer */}
         <div className="container mx-auto px-4 mt-12">
           <h2 className="text-2xl font-bold text-foreground mb-6">
