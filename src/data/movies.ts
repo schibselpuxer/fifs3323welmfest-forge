@@ -5,6 +5,24 @@ import poster4 from "@/assets/movie-poster-4.jpg";
 import poster5 from "@/assets/movie-poster-5.jpg";
 import poster6 from "@/assets/movie-poster-6.jpg";
 
+import sceneAstronaut1 from "@/assets/scene-astronaut-1.jpg";
+import sceneAstronaut2 from "@/assets/scene-astronaut-2.jpg";
+import sceneSchatten1 from "@/assets/scene-schatten-1.jpg";
+import sceneSchatten2 from "@/assets/scene-schatten-2.jpg";
+import sceneWald1 from "@/assets/scene-wald-1.jpg";
+import sceneWald2 from "@/assets/scene-wald-2.jpg";
+import sceneDrachen1 from "@/assets/scene-drachen-1.jpg";
+import sceneDrachen2 from "@/assets/scene-drachen-2.jpg";
+import sceneSommer1 from "@/assets/scene-sommer-1.jpg";
+import sceneSommer2 from "@/assets/scene-sommer-2.jpg";
+import sceneHaus1 from "@/assets/scene-haus-1.jpg";
+import sceneHaus2 from "@/assets/scene-haus-2.jpg";
+
+export interface CrewMember {
+  name: string;
+  role: string;
+}
+
 export interface Movie {
   slug: string;
   title: string;
@@ -19,6 +37,8 @@ export interface Movie {
   director: string;
   cast: string[];
   releaseDate: string;
+  crew: CrewMember[];
+  sceneImages: string[];
 }
 
 export const movies: Movie[] = [
@@ -37,6 +57,14 @@ export const movies: Movie[] = [
     director: "Phil Lord",
     cast: ["Ryan Gosling", "Sandra Bullock", "Ke Huy Quan"],
     releaseDate: "27. März 2025",
+    crew: [
+      { name: "Phil Lord", role: "Regie" },
+      { name: "Christopher Miller", role: "Produktion" },
+      { name: "Drew Goddard", role: "Drehbuch" },
+      { name: "Janusz Kamiński", role: "Kamera" },
+      { name: "Hans Zimmer", role: "Musik" },
+    ],
+    sceneImages: [sceneAstronaut1, sceneAstronaut2],
   },
   {
     slug: "schatten-der-nacht",
@@ -53,6 +81,14 @@ export const movies: Movie[] = [
     director: "Thomas Vinterberg",
     cast: ["Nina Hoss", "Lars Eidinger", "Jella Haase"],
     releaseDate: "3. April 2025",
+    crew: [
+      { name: "Thomas Vinterberg", role: "Regie" },
+      { name: "Stefan Arndt", role: "Produktion" },
+      { name: "Florian Henckel von Donnersmarck", role: "Drehbuch" },
+      { name: "Hoyte van Hoytema", role: "Kamera" },
+      { name: "Max Richter", role: "Musik" },
+    ],
+    sceneImages: [sceneSchatten1, sceneSchatten2],
   },
   {
     slug: "waldabenteuer",
@@ -69,6 +105,14 @@ export const movies: Movie[] = [
     director: "Caroline Link",
     cast: ["Stimmen: Anke Engelke", "Christoph Maria Herbst"],
     releaseDate: "15. März 2025",
+    crew: [
+      { name: "Caroline Link", role: "Regie" },
+      { name: "Jakob Claussen", role: "Produktion" },
+      { name: "Ruth Toma", role: "Drehbuch" },
+      { name: "Jürgen Jürges", role: "Kamera" },
+      { name: "Niki Reiser", role: "Musik" },
+    ],
+    sceneImages: [sceneWald1, sceneWald2],
   },
   {
     slug: "drachenzorn",
@@ -85,6 +129,14 @@ export const movies: Movie[] = [
     director: "Denis Villeneuve",
     cast: ["Timothée Chalamet", "Zendaya", "Oscar Isaac"],
     releaseDate: "10. April 2025",
+    crew: [
+      { name: "Denis Villeneuve", role: "Regie" },
+      { name: "Mary Parent", role: "Produktion" },
+      { name: "Jon Spaihts", role: "Drehbuch" },
+      { name: "Greig Fraser", role: "Kamera" },
+      { name: "Hans Zimmer", role: "Musik" },
+    ],
+    sceneImages: [sceneDrachen1, sceneDrachen2],
   },
   {
     slug: "sommernaechte",
@@ -101,6 +153,13 @@ export const movies: Movie[] = [
     director: "Bora Dagtekin",
     cast: ["Karoline Herfurth", "Elyas M'Barek", "Jella Haase"],
     releaseDate: "20. März 2025",
+    crew: [
+      { name: "Bora Dagtekin", role: "Regie & Drehbuch" },
+      { name: "Lena Schömann", role: "Produktion" },
+      { name: "Daniel Gottschalk", role: "Kamera" },
+      { name: "Beckmann & Djorkaeff", role: "Musik" },
+    ],
+    sceneImages: [sceneSommer1, sceneSommer2],
   },
   {
     slug: "das-haus",
@@ -117,6 +176,13 @@ export const movies: Movie[] = [
     director: "Robert Eggers",
     cast: ["Anya Taylor-Joy", "Willem Dafoe"],
     releaseDate: "1. April 2025",
+    crew: [
+      { name: "Robert Eggers", role: "Regie & Drehbuch" },
+      { name: "Ari Aster", role: "Produktion" },
+      { name: "Jarin Blaschke", role: "Kamera" },
+      { name: "Mark Korven", role: "Musik" },
+    ],
+    sceneImages: [sceneHaus1, sceneHaus2],
   },
 ];
 
