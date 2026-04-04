@@ -18,6 +18,28 @@ import sceneSommer2 from "@/assets/scene-sommer-2.jpg";
 import sceneHaus1 from "@/assets/scene-haus-1.jpg";
 import sceneHaus2 from "@/assets/scene-haus-2.jpg";
 
+import castRyanGosling from "@/assets/cast/ryan-gosling.jpg";
+import castSandraBullock from "@/assets/cast/sandra-bullock.jpg";
+import castKeHuyQuan from "@/assets/cast/ke-huy-quan.jpg";
+import castNinaHoss from "@/assets/cast/nina-hoss.jpg";
+import castLarsEidinger from "@/assets/cast/lars-eidinger.jpg";
+import castJellaHaase from "@/assets/cast/jella-haase.jpg";
+import castAnkeEngelke from "@/assets/cast/anke-engelke.jpg";
+import castChristophMariaHerbst from "@/assets/cast/christoph-maria-herbst.jpg";
+import castTimotheeChalamet from "@/assets/cast/timothee-chalamet.jpg";
+import castZendaya from "@/assets/cast/zendaya.jpg";
+import castOscarIsaac from "@/assets/cast/oscar-isaac.jpg";
+import castKarolineHerfurth from "@/assets/cast/karoline-herfurth.jpg";
+import castElyasMbarek from "@/assets/cast/elyas-mbarek.jpg";
+import castAnyaTaylorJoy from "@/assets/cast/anya-taylor-joy.jpg";
+import castWillemDafoe from "@/assets/cast/willem-dafoe.jpg";
+
+export interface CastMember {
+  name: string;
+  role?: string;
+  portrait: string;
+}
+
 export interface CrewMember {
   name: string;
   role: string;
@@ -35,7 +57,7 @@ export interface Movie {
   description: string;
   trailerUrl: string;
   director: string;
-  cast: string[];
+  cast: CastMember[];
   releaseDate: string;
   crew: CrewMember[];
   sceneImages: string[];
@@ -55,7 +77,11 @@ export const movies: Movie[] = [
       "Ein Astronaut wacht allein auf einem Raumschiff auf – ohne Erinnerung an seine Mission. Während er Stück für Stück die Wahrheit aufdeckt, wird klar: Er ist die letzte Hoffnung der Menschheit. Ein mitreißendes Abenteuer voller Wissenschaft, Humor und Herz.",
     trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     director: "Phil Lord",
-    cast: ["Ryan Gosling", "Sandra Bullock", "Ke Huy Quan"],
+    cast: [
+      { name: "Ryan Gosling", role: "Dr. Ryland Grace", portrait: castRyanGosling },
+      { name: "Sandra Bullock", role: "Commander Yáo", portrait: castSandraBullock },
+      { name: "Ke Huy Quan", role: "Rocky (Stimme)", portrait: castKeHuyQuan },
+    ],
     releaseDate: "27. März 2025",
     crew: [
       { name: "Phil Lord", role: "Regie" },
@@ -79,7 +105,11 @@ export const movies: Movie[] = [
       "Kommissarin Laura Brandt jagt einen Serienkiller, der seine Taten nach einem scheinbar zufälligen Muster begeht. Doch als sie das Muster entschlüsselt, wird sie selbst zur Zielscheibe. Ein nervenaufreibender Thriller, der bis zur letzten Minute fesselt.",
     trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     director: "Thomas Vinterberg",
-    cast: ["Nina Hoss", "Lars Eidinger", "Jella Haase"],
+    cast: [
+      { name: "Nina Hoss", role: "Laura Brandt", portrait: castNinaHoss },
+      { name: "Lars Eidinger", role: "Viktor Engel", portrait: castLarsEidinger },
+      { name: "Jella Haase", role: "Sophie Kern", portrait: castJellaHaase },
+    ],
     releaseDate: "3. April 2025",
     crew: [
       { name: "Thomas Vinterberg", role: "Regie" },
@@ -103,7 +133,10 @@ export const movies: Movie[] = [
       "Die kleine Mia entdeckt im Wald hinter ihrem Haus eine verborgene Welt voller sprechender Tiere und magischer Pflanzen. Gemeinsam mit ihrem Fuchs-Freund Felix muss sie den Wald vor einer mysteriösen Bedrohung retten.",
     trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     director: "Caroline Link",
-    cast: ["Stimmen: Anke Engelke", "Christoph Maria Herbst"],
+    cast: [
+      { name: "Anke Engelke", role: "Mia (Stimme)", portrait: castAnkeEngelke },
+      { name: "Christoph Maria Herbst", role: "Felix (Stimme)", portrait: castChristophMariaHerbst },
+    ],
     releaseDate: "15. März 2025",
     crew: [
       { name: "Caroline Link", role: "Regie" },
@@ -127,7 +160,11 @@ export const movies: Movie[] = [
       "In einer Welt, in der Drachen und Menschen einst in Frieden lebten, droht ein uralter Krieg erneut auszubrechen. Der junge Drachenreiter Kael muss eine gefährliche Reise antreten, um den Frieden wiederherzustellen – bevor es zu spät ist.",
     trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     director: "Denis Villeneuve",
-    cast: ["Timothée Chalamet", "Zendaya", "Oscar Isaac"],
+    cast: [
+      { name: "Timothée Chalamet", role: "Kael", portrait: castTimotheeChalamet },
+      { name: "Zendaya", role: "Lyra", portrait: castZendaya },
+      { name: "Oscar Isaac", role: "König Aldric", portrait: castOscarIsaac },
+    ],
     releaseDate: "10. April 2025",
     crew: [
       { name: "Denis Villeneuve", role: "Regie" },
@@ -151,7 +188,11 @@ export const movies: Movie[] = [
       "Drei Freundinnen erleben einen unvergesslichen Sommer in Berlin – zwischen Open-Air-Konzerten, spontanen Roadtrips und der Suche nach der großen Liebe. Eine warmherzige Komödie über Freundschaft und Neuanfänge.",
     trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     director: "Bora Dagtekin",
-    cast: ["Karoline Herfurth", "Elyas M'Barek", "Jella Haase"],
+    cast: [
+      { name: "Karoline Herfurth", role: "Lena", portrait: castKarolineHerfurth },
+      { name: "Elyas M'Barek", role: "Cem", portrait: castElyasMbarek },
+      { name: "Jella Haase", role: "Nele", portrait: castJellaHaase },
+    ],
     releaseDate: "20. März 2025",
     crew: [
       { name: "Bora Dagtekin", role: "Regie & Drehbuch" },
@@ -174,7 +215,10 @@ export const movies: Movie[] = [
       "Eine junge Familie zieht in ein abgelegenes Haus auf dem Land. Doch seltsame Geräusche, verschwundene Gegenstände und die düsteren Geschichten der Nachbarn deuten darauf hin, dass sie nicht allein sind. Ein atmosphärischer Horrorfilm, der unter die Haut geht.",
     trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     director: "Robert Eggers",
-    cast: ["Anya Taylor-Joy", "Willem Dafoe"],
+    cast: [
+      { name: "Anya Taylor-Joy", role: "Clara", portrait: castAnyaTaylorJoy },
+      { name: "Willem Dafoe", role: "Der Nachbar", portrait: castWillemDafoe },
+    ],
     releaseDate: "1. April 2025",
     crew: [
       { name: "Robert Eggers", role: "Regie & Drehbuch" },
